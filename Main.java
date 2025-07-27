@@ -1,47 +1,40 @@
 import java.util.Scanner;
-import operations.DeleteUser;
-import operations.FetchUsers;
-import operations.InsertUser;
-import operations.UpdateUser;
+import operations.FindHighApplicationJobs;
+
+import operations.ListInterviewCandidates;
+import operations.RetrieveInterviewSchedules;
 
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        System.out.println("----------- MENU -----------");
-        System.out.println("1. Insert User");
-        System.out.println("2. Fetch All Users");
-        System.out.println("3. Update User");
-        System.out.println("4. Delete User");
-        System.out.println("5. Exit");
-        System.out.println("6. Fetch User by ID");
+        System.out.println("\n----------- MENU -----------");
+        System.out.println("1. List Candidates in Interview Stage");
+        System.out.println("2. Retrieve Interview Schedules");
+        System.out.println("3. Find Jobs with >50 Applications");
 
+        System.out.println("4. Exit");
         System.out.print("Enter your choice: ");
 
         int choice = sc.nextInt();
+        sc.nextLine(); // consume newline
 
         switch (choice) {
             case 1:
-                InsertUser.main(null);
+                ListInterviewCandidates.main(null);
                 break;
             case 2:
-                FetchUsers.main(null);
+                RetrieveInterviewSchedules.main(null);
                 break;
             case 3:
-                UpdateUser.main(null);
-                break;
-            case 4:
-                DeleteUser.main(null);
-                break;
-            case 5:
-                System.out.println("✅ Exiting...");
-                break;
-            case 6:
-                operations.FetchUserById.main(null);
+                FindHighApplicationJobs.main(null);
                 break;
 
+            case 4:
+                System.out.println("✅ Exiting...");
+                break;
             default:
-                System.out.println("❌ Invalid choice, please try again.");
+                System.out.println("❌ Invalid choice. Exiting.");
         }
 
         sc.close();

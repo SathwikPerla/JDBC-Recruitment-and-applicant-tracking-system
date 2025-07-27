@@ -44,7 +44,7 @@ JDBC/
 
 Make sure your `user` table is created as follows:
 
-```sql
+sql
 CREATE TABLE user (
   user_id INT PRIMARY KEY,
   name VARCHAR(100),
@@ -79,7 +79,7 @@ Then run it like this:
 
 java -cp .:lib/mysql-connector-j-9.4.0.jar:jdbc_project.jar Main
 
-##✅ Features
+## ✅ Features
 Add new users with details like name, email, gender, phone, DOB, and password.
 
 View all users stored in the database.
