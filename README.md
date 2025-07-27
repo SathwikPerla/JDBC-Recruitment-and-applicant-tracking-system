@@ -1,92 +1,40 @@
-# JDBC User Management System
+# JDBC Recruitment and Applicant Tracking System
 
-This project is a simple **Java-based User Management System** using **JDBC** and **MySQL**.
+This project is a simple Java-based command-line application for managing recruitment data using JDBC and MySQL. It allows recruiters to interact with the database to fetch useful insights like listing candidates in the interview stage, retrieving interview schedules, and more.
 
-### 🔧 Features
-- Insert New User
-- Fetch All Users
-- Update User
-- Delete User
-- Fetch User by ID
+## ✅ Features Implemented So Far
 
-### 💡 Technologies Used
+### 1. List Candidates in Interview Stage for a Given Job
+- **Input**: Job ID
+- **Output**: All candidates currently in the “interview” stage for that job.
+- **Tables used**: `applications`, `application_stage`, `candidate`, `user`, `job`
+
+### 2. Retrieve Interview Schedules
+- **Output**: Lists all scheduled interviews with candidate and interviewer details.
+- **Tables used**: `interviews`, `candidate`, `interviewer`, `user`, `applications`
+
+### 3. Find Jobs With More Than 50 Applications
+- **Output**: Displays job postings that have received more than 50 applications.
+- **Tables used**: `job`, `applications`
+
+## 🔧 Technologies Used
 - Java
 - MySQL
 - JDBC
 - MySQL Connector/J
-- Git
 
-## 📁 Project Structure
-
-JDBC/
-├── lib/
-│ └── mysql-connector-j-9.4.0.jar
-├── operations/
-│ ├── InsertUser.java
-│ ├── FetchUsers.java
-│ ├── FetchUserById.java
-│ ├── UpdateUser.java
-│ ├── DeleteUser.java
-│ └── Operations.java
-├── DBConnection.java
-├── Main.java
-└── jdbc_project.jar
+## 🗂️ Project Structure
 
 
-## ⚙️ Prerequisites
-
-- Java 11 or higher
-- MySQL Server running locally
-- MySQL Connector JAR (`lib/mysql-connector-j-9.4.0.jar`)
-- MySQL database named `hiring_platform` with a `user` table
-
-## 🧱 MySQL Table Structure
-
-Make sure your `user` table is created as follows:
-
-sql
-CREATE TABLE user (
-  user_id INT PRIMARY KEY,
-  name VARCHAR(100),
-  email VARCHAR(100),
-  gender ENUM('MALE', 'FEMALE', 'OTHERS'),
-  phoneNo VARCHAR(15),
-  dateOfBirth DATE,
-  password VARCHAR(100)
-);
 
 
-## 🚀 How to Compile
-# On Mac
-javac -cp .:lib/mysql-connector-j-9.4.0.jar operations/*.java Main.java
-
-# On Windows
-javac -cp .:lib/mysql-connector-j-9.4.0.jar operations/*.java Main.java
-
-## ▶️ How to Run
-
-java -cp .:lib/mysql-connector-j-9.4.0.jar:. Main
-
-On Windows:
-java -cp .;lib/mysql-connector-j-9.4.0.jar;. Main
 
 
-## 📦 How to Create a JAR
+## 🚀 How to Run
 
-jar cvfe jdbc_project.jar Main *.class operations/*.class
+**Compile Java files**:
+bash
+javac -cp .:lib/mysql-connector-j-9.4.0.jar -d . Main.java operations/*.java DBConnection.java
+jar cfe jdbc_project.jar Main Main.class operations/*.class DBConnection.class
 
-Then run it like this:
-
-java -cp .:lib/mysql-connector-j-9.4.0.jar:jdbc_project.jar Main
-
-## ✅ Features
-Add new users with details like name, email, gender, phone, DOB, and password.
-
-View all users stored in the database.
-
-Fetch details of a specific user by ID.
-
-Update name, phone, and password of an existing user.
-
-Delete a user by ID.
-
+java -cp .:lib/mysql-connector-j-9.4.0.jar -jar jdbc_project.jar
